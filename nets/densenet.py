@@ -62,10 +62,31 @@ def densenet(images, num_classes=1001, is_training=False,
                                          keep_prob=dropout_keep_prob)) as ssc:
             pass
             ##########################
-            from tinyenv import flags
+            current = end_points['pre_conv2'] = slim.conv2d(images, 2*growth, [7, 7], stride=2, padding='same', scope='pre_conv2')
+            current = end_points['pre_pool2'] = slim.max_pool2d(current, [3, 3], stride=2, scope='pre_pool2')
 
-            FLAGS = flags.init()
-            FLAGS.int_flag
+            current = end_points['block1'] = block(current, 12, growth, scope='lblock1')
+            
+            current = end_points['transition1_conv2'] = bn_act_conv_drp(current, growth, [1, 1], scope='transition1_conv2')
+            current = end_points['transition1_pool2'] = slim.avg_pool2d(current, [2, 2], stride=2, scope='transition1_pool2') 
+            
+            current = end_points['block2'] = block(current, 12, growth, scope='lblock2')
+            
+            current = end_points['transition2_conv2'] = bn_act_conv_drp(current, growth, [1, 1], scope='transition2_conv2')
+            current = end_points['transition2_pool2'] = slim.avg_pool2d(current, [2, 2], stride=2, scope='transition2_pool2') 
+            
+            current = end_points['block3'] = block(current, 12, growth, scope='myblock3')
+
+            current = end_points['transition3_conv2'] = bn_act_conv_drp(current, growth, [1, 1], scope='transition3_conv2')
+            current = end_points['transition3_pool2'] = slim.avg_pool2d(current, [2, 2], stride=2, scope='transition3_pool2') 
+
+            current = end_points['block4'] = block(current, 12, growth, scope='lblock3')	
+            
+            current = end_points['global_pool2'] = slim.avg_pool2d(current, [6, 6], scope='lglobal_pool2') 
+            current = end_points['PreLogitsFlatten'] = slim.flatten(current, scope='PreLogitsFlatten')
+            logits = end_points['Logits'] = slim.fully_connected(current, num_classes, activation_fn=None, scope='lLogits')
+
+            end_points['Predictions'] = tf.nn.softmax(logits, name='Predictions')
             ##########################
 
     return logits, end_points
