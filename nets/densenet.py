@@ -62,7 +62,10 @@ def densenet(images, num_classes=1001, is_training=False,
                                          keep_prob=dropout_keep_prob)) as ssc:
             pass
             ##########################
-            # Put your code here.
+            from tinyenv import flags
+
+            FLAGS = flags.init()
+            FLAGS.int_flag
             ##########################
 
     return logits, end_points
