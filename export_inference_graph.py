@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-r"""Saves out a GraphDef containing the architecture of the model.
+"""Saves out a GraphDef containing the architecture of the model.
 
 To use it, run something like this, with a model name defined by slim:
 
