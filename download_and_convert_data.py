@@ -40,13 +40,14 @@ from datasets import download_and_convert_cifar10
 from datasets import download_and_convert_flowers
 from datasets import download_and_convert_mnist
 from datasets import convert_quiz
+from datasets import convert_pj_vehicle
 
 FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string(
     'dataset_name',
     None,
-    'The name of the dataset to convert, one of "cifar10", "flowers", "mnist".')
+    'The name of the dataset to convert, one of "cifar10", "flowers", "mnist","pj_vehicle".')
 
 tf.app.flags.DEFINE_string(
     'dataset_dir',
