@@ -9,7 +9,7 @@ import os
 def parse_args(check=True):
     parser = argparse.ArgumentParser()
     # train
-    parser.add_argument('--dataset_name', type=str, default='pj_vehcle')
+    parser.add_argument('--dataset_name', type=str, default='pj_vehicle')
     parser.add_argument('--dataset_dir', type=str)
     parser.add_argument('--checkpoint_path', type=str, default='')
     #parser.add_argument('--model_name', type=str, default='inception_v4')
@@ -20,7 +20,7 @@ def parse_args(check=True):
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--clone_on_cpu', type=bool, default=False)
     parser.add_argument('--optimizer', type=str, default='rmsprop')
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=1000)
 
     # eval
     parser.add_argument('--dataset_split_name', type=str, default='validation')
