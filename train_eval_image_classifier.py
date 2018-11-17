@@ -9,7 +9,7 @@ import os
 def parse_args(check=True):
     parser = argparse.ArgumentParser()
     # train
-    parser.add_argument('--dataset_name', type=str, default='quiz')
+    parser.add_argument('--dataset_name', type=str, default='pj_vehcle')
     parser.add_argument('--dataset_dir', type=str)
     parser.add_argument('--checkpoint_path', type=str, default='')
     #parser.add_argument('--model_name', type=str, default='inception_v4')
