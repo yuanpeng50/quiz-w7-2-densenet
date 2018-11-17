@@ -32,10 +32,10 @@ class ExportInferenceGraphTest(tf.test.TestCase):
 
   def testExportInferenceGraph(self):
     tmpdir = self.get_temp_dir()
-    output_file = os.path.join(tmpdir, 'inception_v3.pb')
+    output_file = os.path.join(tmpdir, 'densenet.pb')
     flags = tf.app.flags.FLAGS
     flags.output_file = output_file
-    flags.model_name = 'inception_v3'
+    flags.model_name = 'densenet'
     flags.dataset_dir = tmpdir
     export_inference_graph.main(None)
     self.assertTrue(gfile.Exists(output_file))
