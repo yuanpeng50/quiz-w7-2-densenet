@@ -10,7 +10,7 @@ def parse_args(check=True):
     parser = argparse.ArgumentParser()
     # train
     parser.add_argument('--dataset_name', type=str, default='pj_vehicle')
-    parser.add_argument('--dataset_dir', type=str)
+    parser.add_argument('--dataset_dir', type=str,default='data/yuanpeng/obd/')
     parser.add_argument('--checkpoint_path', type=str, default='')
     #parser.add_argument('--model_name', type=str, default='inception_v4')
     parser.add_argument('--model_name', type=str, default='densenet')
